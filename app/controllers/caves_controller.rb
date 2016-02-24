@@ -6,13 +6,13 @@ class CavesController < ApplicationController
   def index
     @caves = Cafe.all
 
-    render json: @caves
+    # render json: @caves
   end
 
   # GET /caves/1
   # GET /caves/1.json
   def show
-    render json: @cafe
+    # render json: @cafe
   end
 
   # POST /caves
