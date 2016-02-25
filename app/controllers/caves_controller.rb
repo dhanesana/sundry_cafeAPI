@@ -5,7 +5,11 @@ class CavesController < ApplicationController
   # GET /caves.json
   def index
     @caves = Cafe.all
-
+    sort_this = []
+    @caves.each do |cafe|
+      sort_this << { cafe => cafe.memberships.order('created_at DESC').first }
+    end
+    @sorted = sort_this.sort_by! { |hash| hash.values.first.count }.reverse!
     # render json: @caves
   end
 

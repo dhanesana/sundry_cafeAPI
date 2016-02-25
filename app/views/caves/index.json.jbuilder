@@ -1,11 +1,10 @@
 json.cool_guy "YongChicken"
-json.cafes @caves do |cafe|
-  json.id cafe.id
-  json.kor_name cafe.kor_name
-  json.eng_name cafe.eng_name
-  json.type cafe.cafe_type.capitalize
-  json.cafe_url cafe.url
-  json.url cafe_url(cafe, format: :json)
-  json.members cafe.memberships.order('created_at DESC').first.count
-  json.updated cafe.memberships.order('created_at DESC').first.created_at.to_i
+json.cafes @sorted do |hash|
+  json.id hash.keys.first.id
+  json.kor_name hash.keys.first.kor_name
+  json.eng_name hash.keys.first.eng_name
+  json.type hash.keys.first.cafe_type.capitalize
+  json.cafe_url hash.keys.first.url
+  json.members hash.values.first.count
+  json.updated hash.values.first.created_at.to_i
 end
